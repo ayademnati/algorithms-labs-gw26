@@ -154,11 +154,11 @@ traversal of the tree after insertion. The first two rows are worked.
 |---|---|---|---|
 | 40 | None (Root) | Root | `[40]` |
 | 20 | 40 | Left | `[20, 40]` |
-| 60 | TODO | TODO | TODO |
-| 10 | TODO | TODO | TODO |
-| 30 | TODO | TODO | TODO |
-| 50 | TODO | TODO | TODO |
-| 70 | TODO | TODO | TODO |
+| 60 | 40 | right | `[20, 40, 60]` |
+| 10 | 20 | left | `[10, 20, 40, 60]` |
+| 30 | 20 | right | `[10, 20, 30, 40, 60]` |
+| 50 | 60 | left | `[10, 20, 30, 40, 50, 60]` |
+| 70 | 60 | right | `[10, 20, 30, 40, 50, 60, 70]` |
 
 ### 1.2 Trace: Deletion
 
@@ -177,8 +177,8 @@ worked.
 | Target key | Deletion case | Successor key | Node spliced / replaced | In-order traversal afterward |
 |---|---|---|---|---|
 | 10 | 0 children (leaf) | None | 10 | `[20, 30, 40, 50, 60, 70]` |
-| 20 | TODO | TODO | TODO | TODO |
-| 40 | TODO | TODO | TODO | TODO |
+| 20 | 1 child | 30 | 20 | `[30, 40, 50, 60, 70]` |
+| 40 | 2 children | 50 | 40 | `[30, 50, 60, 70]` |
 
 ### 1.3 Implementation
 
@@ -196,8 +196,13 @@ python3 bst_practice.py
 **TODO 1.4A:** In a two-child deletion (Case 3), why is the in-order successor
 guaranteed never to have a left child?
 
+  because the in-order successor is supposed to be the furthest left child in that subtree; if it did then the left child would be the in-order successor.
+
 **TODO 1.4B:** When deleting the root node of the tree, what special pointer
 updates must take place regarding `tree.root` and `node.parent`?
+
+  the node parent now is None because it's the root and 
+  the tree root is now that node.
 
 All three basic BST operations (search, insert, delete) run in $O(h)$ time,
 where $h$ is the height of the tree. The iterative implementations require
@@ -229,8 +234,8 @@ visited, in order, and the total number of key comparisons.
 
 | Tree | Search path to key `7` | Total comparisons |
 |---|---|---|
-| Degenerate BST | TODO | TODO |
-| Balanced BST | TODO | TODO |
+| Degenerate BST | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| Balanced BST | 4, 6, 7 | 3 |
 
 The test suite in `lab_checks.py` demonstrates the difference empirically by
 searching for key `999` among 1,000 keys: 1,000 node comparisons on a
