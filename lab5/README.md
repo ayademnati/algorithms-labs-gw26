@@ -25,11 +25,11 @@ at different ancestors.
 | `avl_practice.py` | Implement `avl_delete` and complete the rebalancing loop; rotation functions from Lab 4 are provided |
 | `lab_checks.py` | Provided checks and profiling demonstration; do not edit |
 
-- [ ] Part 1: AVL deletion strategy, rebalancing pass conceptual understanding
-- [ ] Part 2: Deletion traces (single rotation, double rotation, multiple rotations)
-- [ ] Part 3: Implement `avl_delete` with post-deletion rebalancing
-- [ ] Part 4: Analyze and compare insertion vs. deletion cost
-- [ ] Run the practice file and resolve all failed checks.
+- [x] Part 1: AVL deletion strategy, rebalancing pass conceptual understanding
+- [x] Part 2: Deletion traces (single rotation, double rotation, multiple rotations)
+- [x] Part 3: Implement `avl_delete` with post-deletion rebalancing
+- [x] Part 4: Analyze and compare insertion vs. deletion cost
+- [x] Run the practice file and resolve all failed checks.
 
 Keep the function names and parameters unchanged. The provided checks inspect
 pointer identities, in-order traversals, parent references, node heights, and
