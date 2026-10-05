@@ -167,7 +167,6 @@ def rotate_right_left(tree, z):
 
 def avl_delete(tree, key):
     """
-    TODO 3.1: Implement AVL deletion with rebalancing.
 
     Steps:
     1. Locate the node to delete (z).

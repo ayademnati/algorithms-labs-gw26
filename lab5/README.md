@@ -97,16 +97,16 @@ have a different height, creating imbalances higher up.
 ### 1.1 Short answer: BST deletion reminder
 
 **TODO 1.1:** Briefly recall the three deletion cases from Lab 3/4:
-- What happens when the target node has 0 children?
-- What happens when the target node has 1 child?
-- What happens when the target node has 2 children, and why is the in-order successor used?
+- What happens when the target node has 0 children? the target node is simply replaced
+- What happens when the target node has 1 child? the child replaces the target node 
+- What happens when the target node has 2 children, and why is the in-order successor used? the smallest node of the target's right subtree replaces the target node. This preserves the in-order ordering of the BST
 
 ### 1.2 Short answer: Height change after deletion
 
 **TODO 1.2:** When you delete a leaf node from an AVL tree:
-- Does the leaf's parent's height change? By how much?
-- Can the grandparent's height change?
-- Can the imbalance propagate to the root?
+- Does the leaf's parent's height change? By how much? it decreases by 1
+- Can the grandparent's height change? also decreases by 1
+- Can the imbalance propagate to the root? yes
 
 ---
 
@@ -140,8 +140,8 @@ Start with this AVL tree:
 | Step | Action | Tree state | Unbalanced node | BF | Signature | Rotation | Notes |
 |---|---|---|---|---|---|---|---|
 | 1 | Delete 40 | 40 is removed (leaf) | - | - | - | - | Tree now has 30 root, 20 left, nothing right |
-| 2 | Rebalance from 30 | TODO | TODO | TODO | TODO | TODO | TODO |
-| 3 | After rotation | TODO | TODO | TODO | - | - | Final state |
+| 2 | Rebalance from 30 | 30 root, 20 left child of 30, 10 left child of 20 | 30 | 2 | LL | single right rotation | - |
+| 3 | After rotation | 20 root, 10 left child, 30 right child | - | - | - | - | Final state |
 
 ### 2.2 Trace: Double rotation after deletion
 
@@ -166,7 +166,7 @@ Start with this AVL tree:
 
 | Step | Action | Current node | BF before | Signature | Rotation applied | BF after |
 |---|---|---|---|---|---|---|
-| 1 | Delete 40 | 30 | TODO | TODO | TODO | TODO |
+| 1 | Delete 40 | 30 | 2 | LR | single left rotation, then single right rotation | 0 |
 | 2 | Verify final | - | - | - | - | - |
 
 ### 2.3 Trace: Two-child deletion with rebalancing
@@ -194,8 +194,8 @@ Trace the rebalancing:
 
 | Step | Current node | BF | Imbalanced? | Violation | Rotation applied |
 |---|---|---|---|---|---|
-| 1 | (after replacing 30 with 40) | TODO | TODO | TODO | TODO |
-| 2 | (if needed, continue up) | TODO | TODO | TODO | TODO |
+| 1 | (after replacing 30 with 40) | 2 | yes | 40 has a BF 2; left heavy straight line | LL |
+| 2 | (if needed, continue up) | - | - | - | - |
 
 ---
 
@@ -244,18 +244,18 @@ measuring the number of rotations triggered by each operation.
 **TODO 4.1:** Based on your implementation and understanding of the algorithm:
 
 1. Why can a single deletion trigger multiple rotations at different ancestors,
-   whereas a single insertion triggers at most one rotation?
-2. What property of rotations ensures that insertion stops after one fix?
-3. Does a deletion ever need to rebalance higher than the root? Explain.
+   whereas a single insertion triggers at most one rotation? because when a rotation is applied in the case of a single deletion, it potentially decreases the subtree where the deletion occured by 1, which is different from the pre-deletion height, meaning this change affects all of the ancestor's heights and BFs.
+2. What property of rotations ensures that insertion stops after one fix? the height of the subtree where the insertion occured is restored to its pre-insertion height.
+3. Does a deletion ever need to rebalance higher than the root? Explain. no, because the root is the highest ancestor, and nothing exists above it.
 
 ### 4.2 Short answer: Real-world implications
 
 **TODO 4.2:** Consider a scenario where an application frequently insertions and deletions
 in an AVL tree (e.g., a priority queue or cache).
 
-1. Based on the rotation cost, would you expect insertions or deletions to be slower?
+1. Based on the rotation cost, would you expect insertions or deletions to be slower? deletions because they require more work, potentially up to the root.
 2. If deletions become a bottleneck, what alternative data structure (from this course)
-   might handle deletions more efficiently?
+   might handle deletions more efficiently? B trees?
 
 ---
 
