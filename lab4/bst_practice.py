@@ -63,8 +63,6 @@ def bst_insert(tree, key):
   Preconditions: key is comparable and distinct from existing keys in tree.
   Postconditions: tree satisfies BST search invariant; new node has correct parent.
   """
-  # TODO 1.3A: Traverse downward to find parent slot, attach Node(key, parent=...), and update tree.root if empty.
-
   z = Node(key)
   parent = None 
   current = tree.root

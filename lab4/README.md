@@ -281,9 +281,9 @@ that repairs it. The first row is worked.
 | Insertion order | Unbalanced node and BF | Heavier child and BF | Signature | Repair |
 |---|---|---|---|---|
 | `[30, 20, 10]` | `30`, +2 | `20`, +1 | LL | `rotate_right(tree, 30)` |
-| `[10, 20, 30]` | TODO | TODO | TODO | TODO |
-| `[30, 10, 20]` | TODO | TODO | TODO | TODO |
-| `[10, 30, 20]` | TODO | TODO | TODO | TODO |
+| `[10, 20, 30]` | `10`, -2 | `20`, -1 | RR | `rotate_left(tree, 10)` |
+| `[30, 10, 20]` | `30`, +2 | `10`, +1 | LR | `rotate_left_right(tree, 20)` |
+| `[10, 30, 20]` | `10`, -2 | `30`, -1 | RL | `rotate_right_left(tree, 20)` |
 
 AVL trees strictly guarantee height $h < 1.44 \log_2(n + 2)$, ensuring
 $O(\log n)$ worst-case search.
@@ -388,8 +388,8 @@ the root, 20 is its left child, and 10 is 20's left child).
 | Node | Parent after | Left after | Right after | Height after |
 |---|---|---|---|---|
 | 20 | `None` (root) | 10 | 30 | 1 |
-| 10 | TODO | TODO | TODO | TODO |
-| 30 | TODO | TODO | TODO | TODO |
+| 10 | 20 | `None` | `None` | 0 |
+| 30 | 20 | `None` | `None` | 0 |
 
 Confirm that the in-order traversal of the keys remains `[10, 20, 30]` both
 before and after the rotation.
@@ -516,12 +516,12 @@ Insert the keys `[30, 10, 20]` into an empty AVL tree, once with each method.
 **TODO 4.2:** Answer the following:
 
 1. **Iterative insertion:** After inserting `20`, in what order does the
-   algorithm visit the ancestors, and how does it move between them?
+   algorithm visit the ancestors, and how does it move between them? it visits nodes starting from the parent of 20, which is 10, then 30.
 2. **Recursive insertion:** After inserting `20`, in what order do the
-   recursive calls finish rebalancing their nodes?
-3. Which node is the first unbalanced node in each version?
+   recursive calls finish rebalancing their nodes? 20 does its recursive call, then 10 does, and finally 30 does its recursive call.
+3. Which node is the first unbalanced node in each version? 30
 4. How much extra memory does each version use, in terms of the tree height
-   $h$? Explain why they differ.
+   $h$? Explain why they differ. each recursive call, requires a stack frame so O(height), and in the iterative version, we don't need extra memory to track the path from the node to the insertion node because we have parent pointers, so the extra memory is O(1).
 
 Both versions run in $O(\log n)$ time because an AVL tree has height
 $O(\log n)$ and each rebalancing step does $O(1)$ work.
