@@ -7,7 +7,17 @@
 # and so on...
 
 def fibonacci_threeway(n):
-    raise NotImplementedError("TODO: replace this line in fibonacci_threeway.py with your solution!")
+    if n <= 0:
+        return 0
+    if n in (1,2,3):
+        return 1
+
+    # set up
+    a, b, c = 1, 1, 1
+    for fib in range(4, n + 1):
+        next_val = a + b + c
+        a, b, c = b, c, next_val
+    return c
 
 def is_positive_integer(text):
     try:
