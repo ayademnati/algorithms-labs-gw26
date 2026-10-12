@@ -96,7 +96,6 @@ def bst_delete(tree, key):
   Handles 0-child, 1-child, and 2-child cases using the in-order successor.
   Preserves BST search invariant and all parent pointers.
   """
-  # TODO 1.3B: Find target node z; handle 0-child, 1-child, and 2-child cases using transplant and successor.
   z = bst_search(tree.root, key)
   if z == None:
     return None

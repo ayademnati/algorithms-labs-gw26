@@ -27,11 +27,11 @@ $\text{BF}(v) = \text{height}(v.\text{left}) - \text{height}(v.\text{right})$.
 | `rotation_practice.py` | Implement `balance_factor`, `rotate_left`, `rotate_right`, `rotate_left_right`, `rotate_right_left`, `avl_insert_iterative`, and `avl_insert_recursive`; `print_tree` is provided for debugging |
 | `lab_checks.py` | Provided checks and profiling demonstration; do not edit |
 
-- [ ] Part 1: BST insertion and deletion traces, implementation, and short answers.
-- [ ] Part 2: Imbalance search path trace and violation diagnostics.
-- [ ] Part 3: AVL rotation trace, implementations, and short answer.
-- [ ] Part 4: Iterative and recursive AVL insertion implementations and comparison.
-- [ ] Run both practice files and resolve all failed checks.
+- [x] Part 1: BST insertion and deletion traces, implementation, and short answers.
+- [x] Part 2: Imbalance search path trace and violation diagnostics.
+- [x] Part 3: AVL rotation trace, implementations, and short answer.
+- [x] Part 4: Iterative and recursive AVL insertion implementations and comparison.
+- [x] Run both practice files and resolve all failed checks.
 
 Keep the function names and parameters unchanged. Do not use `sorted` or
 `list.sort` to implement the required functions. The provided checks inspect
