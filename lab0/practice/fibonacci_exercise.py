@@ -2,13 +2,11 @@
 
 def fibonacci(n):
     """Return the n-th fibonacci number for a given integer n."""
-    if n < 0:
-        raise ValueError("Fibonacci is not defined for negative integers")
-
-    # TODO: Add the base case. Note: Fib(0) is 0; Fib(1) is 1; Fib(2) is 1, so on.
-
-    # TODO: Return fibonacci: 
-    raise NotImplementedError("Complete fibonacci")
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
 
 
 def main():

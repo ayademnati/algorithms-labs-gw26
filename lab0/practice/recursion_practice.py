@@ -5,11 +5,11 @@ def factorial(n):
     """Return n! for a nonnegative integer n."""
     if n < 0:
         raise ValueError("factorial is not defined for negative integers")
+    
+    if n == 0 or n == 1:
+        return 1
 
-    # TODO: Add the base case. Remember that 0! is 1.
-
-    # TODO: Return n multiplied by factorial(n - 1).
-    raise NotImplementedError("Complete factorial")
+    return n * factorial(n - 1)
 
 
 def main():
