@@ -29,10 +29,10 @@ any code. You will focus on the three most important building blocks from class:
 | `probing_practice.py` | Implement `linear_probe_insert` and `linear_probe_lookup`; `probe_index` is provided |
 | `lab_checks.py` | Provided automated checks and load-factor demonstration; do not edit |
 
-- [ ] Part 1: Division vs. Multiplication hash trace, 2 short functions, and 1 question.
-- [ ] Part 2: Separate Chaining trace, 2 functions (`chaining_insert`, `chaining_lookup`), and 1 question.
-- [ ] Part 3: Linear Probing trace, 2 functions (`linear_probe_insert`, `linear_probe_lookup`), and 1 question.
-- [ ] Run all three practice files and confirm all checks pass.
+- [x] Part 1: Division vs. Multiplication hash trace, 2 short functions, and 1 question.
+- [x] Part 2: Separate Chaining trace, 2 functions (`chaining_insert`, `chaining_lookup`), and 1 question.
+- [x] Part 3: Linear Probing trace, 2 functions (`linear_probe_insert`, `linear_probe_lookup`), and 1 question.
+- [x] Run all three practice files and confirm all checks pass.
 
 Keep function names and parameters unchanged, and do not use Python's built-in
 `dict` or `set` inside your hash table implementations.
