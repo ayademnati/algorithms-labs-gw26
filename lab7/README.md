@@ -30,7 +30,7 @@ pseudocode, and practice traces. The current sections cover:
 
 - [x] Part 1: Trace and implement naive search.
 - [x] Part 2: Trace, implement, and analyze Rabin–Karp.
-- [ ] Part 3: Trace the prefix table and matcher, implement KMP, and analyze its running time.
+- [x] Part 3: Trace the prefix table and matcher, implement KMP, and analyze its running time.
 
 ### Shared conventions
 
@@ -302,11 +302,13 @@ The first row is worked: `P[2] == P[4]`, so `k` increases to `3`.
 | Index `j` | Starting `k` | Fallbacks | `pi[j]` |
 |---|---|---|---|
 | 4 | 2 | none | 3 |
-| 5 | 3 | TODO | TODO |
-| 6 | 0 | TODO | TODO |
+| 5 | 3 | 1, 0 | 0 |
+| 6 | 0 | none | 1 |
 
 Now trace the matcher at `i = 8`, starting with `q = 6`. Which pattern index
 is compared with `T[8]`? What shift is recorded, and what is `q` afterward?
+`T[8]` = `a` is compared with `P[6]` = `a`
+no shift is recorded and 1 is incremented by 1 to 7
 
 ### 3.2 Implementation
 
@@ -331,12 +333,17 @@ Give tight bounds in terms of $n$ and $m$.
 
 | Case | Build `pi` | Search | Total |
 |---|---|---|---|
-| Best | TODO | TODO | TODO |
-| Worst | TODO | TODO | TODO |
+| Best | O(m) | O(n) | O(n + m) |
+| Worst | O(m) | O(n) | O(n + m) |
 
 Explain the worst-case bound in a few lines. Across the whole scan, how often
 can `q` increase? How does that limit the number of fallbacks? Use the same
-reasoning for `k` when building `pi`.
+reasoning for `k` when building `pi`. 
+build: k can increase by 1 at most m times, so the # of fallbacks cannot exceed the # of times k increased.
+search: q can increase at most once n times, so the # of fallbacks cannot exceed the # of times q increased.
+
+
+
 
 ---
 
