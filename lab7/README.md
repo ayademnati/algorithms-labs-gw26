@@ -28,8 +28,8 @@ pseudocode, and practice traces. The current sections cover:
 | `string_search.py` | Fill in the four implementation TODOs |
 | `lab_checks.py` | Provided automated checks; do not edit |
 
-- [ ] Part 1: Trace and implement naive search.
-- [ ] Part 2: Trace, implement, and analyze Rabin–Karp.
+- [x] Part 1: Trace and implement naive search.
+- [x] Part 2: Trace, implement, and analyze Rabin–Karp.
 - [ ] Part 3: Trace the prefix table and matcher, implement KMP, and analyze its running time.
 
 ### Shared conventions
@@ -84,9 +84,9 @@ occurs. Record where $j$ stops and whether you add $s$ to the results.
 | Shift `s` | Text indices checked | Final `j` | Append `s`? |
 |---|---|---|---|
 | 1 | `1` | 0 | No |
-| 2 | TODO | TODO | TODO |
-| 4 | TODO | TODO | TODO |
-| 5 | TODO | TODO | TODO |
+| 2 | `2, 3` | 3 | No |
+| 4 | `4, 5` | 5 | No |
+| 5 | `5, 6, 7` | 7 | YES |
 
 ### 1.2 Implementation
 
@@ -173,10 +173,10 @@ At shift `6`, the hash is `7`; all five characters match, so record `6`.
 
 1. **Move from shift `6` to `7`.** Which digit leaves the window, and which
    digit enters? Substitute them into the rolling-hash formula and calculate
-   the new hash.
+   the new hash. 3 leaves, and 2 enters.
 2. **Check shift `12`.** Its hash is `7`, so compare the characters. List the
    text and pattern indices checked before stopping. Is this a match or a
-   spurious hit?
+   spurious hit? Only index 12 in text and index 0 in pattern were checked. This was a spurious hit.
 
 ### 2.2 Implementation
 
@@ -203,11 +203,12 @@ hash comparisons and character checks.
 
 | Case | Build hashes | Search | Total |
 |---|---|---|---|
-| Best | TODO | TODO | TODO |
-| Worst | TODO | TODO | TODO |
+| Best | O(1) | O(n + m) | O(n + m) |
+| Worst | O(1) | O((n - m + 1) * m) | O((n - m + 1) * m) |
 
 For each case, explain in one sentence how many windows need character checks
 and how many characters are checked in each one.
+In the worst case, every "shift is a hit", so you have to check whether each is a spurious hit or an actual one.
 
 ### Connection: Searching for several patterns
 
