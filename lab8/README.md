@@ -24,8 +24,8 @@ This lab covers the graph representations and traversals from lecture:
 | `graph_traversals.py` | Complete `bfs`, `reconstruct_path`, and `dfs` |
 | `lab_checks.py` | Provided automated checks; do not edit |
 
-- [ ] Part 2: Trace BFS, implement it, and reconstruct a path.
-- [ ] Part 3: Trace and implement DFS, then compare traversal costs.
+- [x] Part 2: Trace BFS, implement it, and reconstruct a path.
+- [x] Part 3: Trace and implement DFS, then compare traversal costs.
 
 ---
 
