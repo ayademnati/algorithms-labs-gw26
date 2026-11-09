@@ -20,10 +20,13 @@ def topological_sort(graph):
         for v in graph[u]:
             indegree[v] = indegree[v] + 1
     queue = deque()
+    for u in range(0, n):
+        if indegree[u] == 0:
+            queue.append(u)
     order = []
 
     # TODO 1.2: count incoming edges, process ready vertices, and check for a cycle
-    while queue != None:
+    while queue:
         u = queue.popleft()
         order.append(u)
         for v in graph[u]:
